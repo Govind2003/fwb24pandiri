@@ -1,25 +1,14 @@
 extends layout
 
 block content
-  div(class="container-fluid")
-    h1= title
-  - let results=[{color:"orange",style:"square",material:"plastic"},{color:"green",style:"rectangle",material:"steel"},{color:"red",style:"round",material:"aluminium"}] 
-    div(class="row")
-      each form,index in results
-        div(class = "col-sm-2 bg-primary" onclick=`buy(${index})`) #{form.color}
-        br
-        br
-        br
-        div(class = "col-sm-2 bg-primary" onclick=`buy(${index})`) #{form.style}
-        br
-        br
-        br
-        div(class = "col-sm-2 bg-primary" onclick=`buy(${index})`) #{form.material}
-    script.
-     
-      function buy(itemNo)
-      {
-        alert(`You purchased Item ${itemNo+1}`)
-      }
- 
-
+  h1= title
+  - const tree = ['mug_type','size','age']
+  - let results;
+  script.
+    function buy(x){
+      alert('Purchased Item: ' + x)
+   } 
+  div(class='container-fluid')
+    div(class='row')
+      each results, index in tree
+        div(class='col-sm-2' onclick='buy('+index+')') #{results}
